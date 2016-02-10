@@ -108,8 +108,6 @@ wParam, LPARAM lParam)
 		hdc = BeginPaint(hWnd, &ps); // Начать графический вывод
 	//	SetMenu(hWnd, hmenu1);
 		GetClientRect(hWnd, &rt); // Область окна для рисования
-		DrawText(hdc, "Привет, мир!", -1, &rt,
-			DT_SINGLELINE | DT_CENTER | DT_VCENTER);
 		EndPaint(hWnd, &ps); // Закончить графический вывод
 		break;
 	case WM_DESTROY: // Завершение работы
