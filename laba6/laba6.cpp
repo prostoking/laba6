@@ -88,6 +88,22 @@ wParam, LPARAM lParam)
 	case WM_CREATE: // Сообщение приходит при создании окна
 		//hmenu1 = ;
 		break;
+	case WM_COMMAND:
+		if (lParam == 0)
+		{
+			switch (wParam)
+			{
+			case ID_40001:
+				MessageBox(hWnd, "test", "ok", NULL);
+				break;
+			case ID_40002:
+				MessageBox(hWnd, "Лаба №6,Вариант  8, Тимофеев", "ok", NULL);
+				break;
+			default:
+				MessageBox(hWnd, "Выбор не сделан", "ok", NULL);
+			}
+		}
+		break;
 	case WM_PAINT: // Перерисовать окно
 		hdc = BeginPaint(hWnd, &ps); // Начать графический вывод
 	//	SetMenu(hWnd, hmenu1);
