@@ -1,4 +1,5 @@
 #include <windows.h> // подключение библиотеки с функциями API
+#include "resource.h"
 // Глобальные переменные:
 HINSTANCE hInst; // Указатель приложения
 LPCTSTR szWindowClass = "QWERTY";
@@ -43,7 +44,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.hIcon = LoadIcon(NULL, IDI_HAND); // определение иконки
 		wcex.hCursor = LoadCursor(NULL, IDC_ARROW); // определение курсора
 		wcex.hbrBackground = GetSysColorBrush(COLOR_WINDOW); // установка фона
-		wcex.lpszMenuName = NULL; // определение меню
+		wcex.lpszMenuName = MAKEINTRESOURCE(IDR_MENU1); // определение меню
 	wcex.lpszClassName = szWindowClass; // имя класса
 	wcex.hIconSm = NULL;
 	return RegisterClassEx(&wcex); // регистрация класса окна
@@ -81,12 +82,15 @@ wParam, LPARAM lParam)
 	PAINTSTRUCT ps;
 	HDC hdc;
 	RECT rt;
+	//HMENU hmenu1;
 	switch (message)
 	{
 	case WM_CREATE: // Сообщение приходит при создании окна
+		//hmenu1 = ;
 		break;
 	case WM_PAINT: // Перерисовать окно
 		hdc = BeginPaint(hWnd, &ps); // Начать графический вывод
+	//	SetMenu(hWnd, hmenu1);
 		GetClientRect(hWnd, &rt); // Область окна для рисования
 		DrawText(hdc, "Привет, мир!", -1, &rt,
 			DT_SINGLELINE | DT_CENTER | DT_VCENTER);
